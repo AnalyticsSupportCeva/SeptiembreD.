@@ -1,0 +1,650 @@
+/* =========================================================
+   SEPTIEMBRE EN FLOR — hoja de estilos
+   Paleta inspirada en girasoles, margaritas y luz de tarde.
+   ========================================================= */
+
+:root {
+  /* --- Paleta --- */
+  --color-sol: #E8B923;         /* amarillo girasol, color principal */
+  --color-sol-claro: #F6DE8C;   /* amarillo pálido, resplandor */
+  --color-ocre: #C1791F;        /* ocre profundo, acentos y sombras */
+  --color-coral: #E2673B;       /* coral cálido, detalle de la dedicatoria */
+  --color-verde: #4C6B42;       /* verde fresco, tallos y hojas */
+  --color-verde-oscuro: #33472C;
+
+  --color-crema: #FBF3DE;       /* fondo claro */
+  --color-crema-suave: #F3E7C4;
+  --color-tinta: #2B2410;       /* texto principal, marrón casi negro */
+  --color-tinta-suave: #5B4E30;
+
+  --color-fondo: var(--color-crema);
+  --color-superficie: #FFFDF6;
+  --color-texto: var(--color-tinta);
+  --color-texto-suave: var(--color-tinta-suave);
+  --color-borde: rgba(43, 36, 16, 0.14);
+  --sombra-suave: 0 18px 40px -22px rgba(43, 36, 16, 0.35);
+
+  /* --- Tipografía --- */
+  --fuente-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --fuente-texto: "Outfit", "Segoe UI", system-ui, sans-serif;
+
+  /* --- Layout --- */
+  --ancho-maximo: 1180px;
+  --radio: 22px;
+  --transicion: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Modo oscuro nativo según preferencia del sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-fondo: #201B10;
+    --color-superficie: #292112;
+    --color-texto: #F5EAD0;
+    --color-texto-suave: #CDBD94;
+    --color-borde: rgba(245, 234, 208, 0.14);
+    --color-crema-suave: #34291a;
+    --sombra-suave: 0 18px 44px -20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Alternancia manual vía el botón "Modo oscuro" */
+:root[data-theme="dark"] {
+  --color-fondo: #201B10;
+  --color-superficie: #292112;
+  --color-texto: #F5EAD0;
+  --color-texto-suave: #CDBD94;
+  --color-borde: rgba(245, 234, 208, 0.14);
+  --color-crema-suave: #34291a;
+  --sombra-suave: 0 18px 44px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================================================
+   RESET BÁSICO
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-texto);
+}
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Foco visible para accesibilidad de teclado */
+:focus-visible {
+  outline: 3px solid var(--color-ocre);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-tinta);
+  color: var(--color-crema);
+  padding: 0.8em 1.2em;
+  z-index: 200;
+  border-radius: 0 0 10px 0;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+/* Respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   ENCABEZADO / NAV
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--color-fondo) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.header-inner {
+  max-width: var(--ancho-maximo);
+  margin-inline: auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: var(--fuente-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.brand-mark { font-size: 1.4rem; }
+
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.1rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transicion), color var(--transicion);
+
+  &:hover, &:focus-visible {
+    border-color: var(--color-sol);
+  }
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 0;
+}
+
+.menu-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-inline: auto;
+  background: var(--color-texto);
+  transition: transform var(--transicion), opacity var(--transicion);
+}
+
+/* Estado abierto del menú móvil, controlado por JS con .is-open */
+.menu-toggle.is-open .menu-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.is-open .menu-bar:nth-child(2) { opacity: 0; }
+.menu-toggle.is-open .menu-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 760px) {
+  .menu-toggle { display: flex; }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transicion);
+  }
+
+  .main-nav.is-open { max-height: 260px; }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1.2rem;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-borde);
+  }
+}
+
+/* =========================================================
+   BOTONES GENÉRICOS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.98rem;
+  border: 1px solid transparent;
+  transition: transform var(--transicion), box-shadow var(--transicion), background var(--transicion);
+}
+
+.btn-primary {
+  background: var(--color-sol);
+  color: var(--color-tinta);
+  box-shadow: var(--sombra-suave);
+
+  &:hover, &:focus-visible { transform: translateY(-2px); }
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+
+  &:hover, &:focus-visible {
+    border-color: var(--color-ocre);
+    transform: translateY(-2px);
+  }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: min(88vh, 780px);
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-svg { width: 100%; height: 100%; }
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.hero-eyebrow {
+  font-weight: 500;
+  color: var(--color-ocre);
+  letter-spacing: 0.02em;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  line-height: 0.98;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title-accent {
+  color: var(--color-ocre);
+  font-style: italic;
+  font-optical-sizing: auto;
+}
+
+.hero-copy {
+  color: var(--color-texto-suave);
+  font-size: 1.1rem;
+  max-width: 52ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--color-ocre);
+  border-radius: 999px;
+  display: grid;
+  place-items: start center;
+  padding-top: 8px;
+  z-index: 1;
+}
+
+.scroll-cue-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-ocre);
+  animation: cue-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes cue-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(14px); opacity: 0.2; }
+}
+
+/* =========================================================
+   Animación de aparición al hacer scroll
+   (clase alternada por IntersectionObserver en JS)
+   ========================================================= */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   SECCIONES GENÉRICAS
+   ========================================================= */
+.section-inner {
+  max-width: var(--ancho-maximo);
+  margin-inline: auto;
+  padding: 5rem 1.5rem;
+}
+
+.garden h2, .dedication-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.section-lead {
+  max-width: 60ch;
+  color: var(--color-texto-suave);
+  font-size: 1.1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 2.8rem;
+}
+
+/* =========================================================
+   JARDÍN / BOTONES-FLOR
+   ========================================================= */
+.flower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.flower-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.6rem 1rem 1.3rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  color: var(--color-texto);
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transicion), border-color var(--transicion), background var(--transicion);
+
+  &:hover, &:focus-visible {
+    transform: translateY(-6px) rotate(-1deg);
+    border-color: var(--color-sol);
+  }
+
+  &:active { transform: translateY(-1px) scale(0.98); }
+}
+
+.flower-icon {
+  font-size: 2.1rem;
+  transition: transform var(--transicion);
+}
+
+.flower-btn:hover .flower-icon,
+.flower-btn:focus-visible .flower-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.flower-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-texto-suave);
+}
+
+.flower-btn-final {
+  background: linear-gradient(160deg, var(--color-sol-claro), var(--color-sol) 85%);
+  border-color: var(--color-ocre);
+
+  .flower-label { color: var(--color-tinta); font-weight: 600; }
+}
+
+/* Marcado como ya visto, aplicado por JS */
+.flower-btn.is-visited {
+  border-color: var(--color-verde);
+}
+.flower-btn.is-visited::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-verde);
+  margin-top: -2px;
+}
+
+/* --- Escenario de revelación --- */
+.reveal-stage {
+  position: relative;
+  min-height: 190px;
+  border-radius: var(--radio);
+  background: var(--color-crema-suave);
+  border: 1px solid var(--color-borde);
+  padding: 2.2rem 2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.reveal-placeholder {
+  color: var(--color-texto-suave);
+  font-style: italic;
+}
+
+.reveal-message {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+  max-width: 46ch;
+  position: relative;
+  z-index: 2;
+  animation: mensaje-entra 650ms ease both;
+}
+
+@keyframes mensaje-entra {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Pétalos cayendo */
+.petal {
+  position: absolute;
+  top: -20px;
+  font-size: 1.4rem;
+  z-index: 1;
+  animation: caer linear forwards;
+  pointer-events: none;
+}
+
+@keyframes caer {
+  to { transform: translateY(240px) rotate(340deg); opacity: 0; }
+}
+
+/* Destello / rayo de sol */
+.reveal-stage.efecto-rayo {
+  background: radial-gradient(circle at 50% 0%, var(--color-sol-claro), var(--color-crema-suave) 70%);
+}
+
+/* Viento: leve balanceo del mensaje */
+.reveal-stage.efecto-viento .reveal-message {
+  animation: mensaje-entra 650ms ease both, balanceo 3.2s ease-in-out 650ms infinite;
+}
+
+@keyframes balanceo {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+/* Chispas dispersas para "deseo" y "secreto" */
+.spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-sol);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  animation: chispa 900ms ease-out forwards;
+}
+
+@keyframes chispa {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+}
+
+/* Efecto final: brillo cálido de fondo */
+.reveal-stage.efecto-final {
+  background: linear-gradient(135deg, var(--color-sol-claro), var(--color-coral) 120%);
+}
+.reveal-stage.efecto-final .reveal-message {
+  color: var(--color-tinta);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+/* =========================================================
+   DEDICATORIA
+   ========================================================= */
+.dedication {
+  position: relative;
+  background: var(--color-verde-oscuro);
+  color: var(--color-crema);
+  overflow: hidden;
+}
+
+.dedication-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.dedication-eyebrow {
+  color: var(--color-sol-claro);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.dedication-title {
+  color: var(--color-crema);
+  margin-bottom: 2.2rem;
+}
+
+.dedication-letter {
+  text-align: left;
+  background: rgba(255, 253, 246, 0.06);
+  border: 1px solid rgba(255, 253, 246, 0.14);
+  border-radius: var(--radio);
+  padding: 2.4rem 2.2rem;
+  font-family: var(--fuente-display);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.dedication-signature {
+  font-style: italic;
+  color: var(--color-sol-claro);
+}
+
+.dedication-field {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 90px;
+  background: linear-gradient(0deg, rgba(76, 107, 66, 0.55), transparent);
+}
+
+/* =========================================================
+   PIE DE PÁGINA
+   ========================================================= */
+.site-footer {
+  border-top: 1px solid var(--color-borde);
+}
+
+.footer-inner {
+  max-width: var(--ancho-maximo);
+  margin-inline: auto;
+  padding: 1.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  color: var(--color-texto);
+  font-size: 0.88rem;
+  transition: border-color var(--transicion);
+
+  &:hover, &:focus-visible { border-color: var(--color-sol); }
+}
