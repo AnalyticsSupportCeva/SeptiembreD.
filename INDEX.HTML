@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para Darcy — Una nueva oportunidad</title>
+<meta name="description" content="Una carta digital para Darcy Tello.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--crema:#f7f5ec;--salvia:#e3eae0;--salvia-hondo:#cfdac9;--bosque:#1e3b2a;--bosque-suave:#2d5740;
+--oliva:#6d7c43;--oliva-claro:#93a164;--tinta:#212a22;--tinta-suave:#4a5750;--papel:#fffdf7;
+--borde:rgba(30,59,42,.14);--sombra-sm:0 2px 10px rgba(30,59,42,.07);--sombra-md:0 14px 40px -14px rgba(30,59,42,.28);
+--sombra-lg:0 40px 90px -30px rgba(30,59,42,.45);--radio:20px;--max:1120px;--ease:cubic-bezier(.22,.68,.32,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100%;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-weight:400;
+color:var(--tinta);line-height:1.72;overflow-x:hidden;background:
+radial-gradient(1100px 700px at 15% -5%,#eef3ea 0%,rgba(238,243,234,0) 60%),
+radial-gradient(900px 600px at 95% 10%,#e7eedf 0%,rgba(231,238,223,0) 55%),
+linear-gradient(180deg,var(--salvia) 0%,var(--crema) 42%,var(--crema) 100%);background-attachment:fixed}
+img,svg{display:block;max-width:100%}
+button{font-family:inherit;color:inherit}
+h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.18;letter-spacing:-.01em;color:var(--bosque)}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
+section{position:relative;z-index:2}
+.eyebrow{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--oliva);margin:0 0 14px}
+.rule{width:52px;height:2px;border-radius:2px;margin:26px 0;background:linear-gradient(90deg,var(--oliva),rgba(109,124,67,0))}
+
+/* ===== DINOS DE FONDO ===== */
+.dino-field{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.dino{position:absolute;opacity:0;will-change:transform,opacity;
+animation:floatUpDown var(--dur,16s) ease-in-out var(--delay,0s) infinite alternate,fadeDino 1.8s ease forwards var(--delay,0s)}
+.dino svg{width:100%;height:auto}
+@keyframes floatUpDown{0%{transform:translate3d(0,0,0) rotate(var(--rot,0deg))}
+50%{transform:translate3d(6px,calc(var(--travel,40px)*-.55),0) rotate(calc(var(--rot,0deg) + 2deg))}
+100%{transform:translate3d(-4px,calc(var(--travel,40px)*-1),0) rotate(calc(var(--rot,0deg) - 3deg))}}
+@keyframes fadeDino{to{opacity:var(--op,.16)}}
+.paw{position:absolute;width:10px;height:14px;border-radius:50% 50% 45% 45%;background:var(--oliva);
+opacity:.1;animation:floatUpDown 14s ease-in-out infinite alternate}
+
+/* ===== PIEZAS VIVAS DEL DINO ===== */
+.dk-tail,.dk-arm,.dk-head,.dk-eye,.dk-leg-b,.dk-leg-f{transform-box:fill-box}
+.dk-tail{transform-origin:88% 18%;animation:dkWag 2.4s ease-in-out infinite}
+.dk-arm{transform-origin:85% 90%;animation:dkWave 2.1s ease-in-out infinite}
+.dk-head{transform-origin:22% 80%;animation:dkNod 3.6s ease-in-out infinite}
+.dk-eye{transform-origin:center;animation:dkBlink 4.4s steps(1,end) infinite}
+.dk-leg-b{transform-origin:50% 8%;animation:dkStep 1.2s ease-in-out infinite}
+.dk-leg-f{transform-origin:50% 8%;animation:dkStep 1.2s ease-in-out .6s infinite}
+@keyframes dkWag{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(8deg)}}
+@keyframes dkWave{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-26deg)}}
+@keyframes dkNod{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes dkBlink{0%,92%{transform:scaleY(1)}94%,97%{transform:scaleY(.08)}100%{transform:scaleY(1)}}
+@keyframes dkStep{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.dino .dk-tail{animation-duration:5.5s}
+.dino .dk-arm{animation-duration:6s}
+.dino .dk-head{animation-duration:7s}
+.dino .dk-leg-b,.dino .dk-leg-f{animation:none}
+
+/* ===== SECCIÓN 1 ===== */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:clamp(70px,12vh,120px) 0 60px}
+.hero__inner{max-width:860px;margin-inline:auto}
+.date-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:999px;
+background:rgba(255,253,247,.72);border:1px solid var(--borde);backdrop-filter:blur(8px);box-shadow:var(--sombra-sm);
+font-size:.82rem;font-weight:600;letter-spacing:.14em;color:var(--bosque-suave);animation:riseIn 1s var(--ease) both}
+.date-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--oliva);box-shadow:0 0 0 4px rgba(109,124,67,.16)}
+.hero h1{margin:clamp(26px,4vh,38px) 0 0;font-size:clamp(1.78rem,4.6vw,3.35rem)}
+.hero h1 em{font-style:italic;color:var(--oliva)}
+.hero__name{margin:18px 0 0;font-size:clamp(.78rem,2.4vw,.92rem);letter-spacing:.3em;text-transform:uppercase;color:var(--tinta-suave);font-weight:500}
+.hero h1,.hero__name{animation:riseIn 1.2s var(--ease) .18s both}
+.scroll-cue{margin-top:clamp(40px,7vh,72px);display:flex;flex-direction:column;align-items:center;gap:12px;animation:riseIn 1.2s var(--ease) .5s both}
+.scroll-cue__dino{width:86px}
+.scroll-cue__dino svg{animation:dkHop 1.9s ease-in-out infinite}
+@keyframes dkHop{0%,100%{transform:translateY(0) rotate(0)}40%{transform:translateY(-12px) rotate(-5deg)}70%{transform:translateY(0) rotate(2deg)}}
+.scroll-cue__line{width:1px;height:58px;border-radius:2px;overflow:hidden;background:rgba(30,59,42,.16);position:relative}
+.scroll-cue__line::after{content:"";position:absolute;inset-inline:0;top:-60%;height:60%;
+background:linear-gradient(180deg,rgba(109,124,67,0),var(--oliva));animation:scrollDown 2.1s ease-in-out infinite}
+.scroll-cue__txt{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--tinta-suave)}
+@keyframes scrollDown{0%{top:-60%}70%,100%{top:110%}}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.1s}.reveal[data-d="2"]{transition-delay:.2s}
+.reveal[data-d="3"]{transition-delay:.3s}.reveal[data-d="4"]{transition-delay:.4s}
+.reveal[data-d="5"]{transition-delay:.5s}.reveal[data-d="6"]{transition-delay:.6s}
+
+/* ===== SECCIÓN 2 ===== */
+.letter{padding:clamp(60px,10vh,110px) 0}
+.letter__card{position:relative;max-width:760px;margin-inline:auto;background:var(--papel);border:1px solid var(--borde);
+border-radius:var(--radio);padding:clamp(28px,5vw,58px);box-shadow:var(--sombra-md)}
+.letter__card::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:3px;border-radius:0 3px 3px 0;
+background:linear-gradient(180deg,var(--bosque),var(--oliva-claro));opacity:.5}
+.letter h2{font-size:clamp(1.45rem,3.4vw,2.2rem);margin:0 0 6px}
+.letter p{font-size:clamp(1rem,1.9vw,1.075rem);color:var(--tinta-suave);margin:0 0 18px}
+.letter p.lead{color:var(--tinta);font-size:clamp(1.04rem,2.1vw,1.16rem)}
+.secret-btn{display:inline-flex;align-items:flex-start;gap:12px;text-align:left;margin-top:10px;padding:16px 20px;
+border-radius:16px;cursor:pointer;background:linear-gradient(180deg,rgba(227,234,224,.85),rgba(227,234,224,.5));
+border:1px solid rgba(30,59,42,.18);font-size:.92rem;font-weight:500;line-height:1.6;color:var(--bosque);
+transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease)}
+.secret-btn:hover{transform:translateY(-2px);box-shadow:var(--sombra-md);background:rgba(227,234,224,.95)}
+.secret-btn:focus-visible{outline:2px solid var(--oliva);outline-offset:3px}
+.secret-btn__icon{flex:0 0 auto;width:20px;margin-top:2px;transition:transform .45s var(--ease)}
+.secret-btn[aria-expanded="true"] .secret-btn__icon{transform:rotate(180deg)}
+.secret{display:grid;grid-template-rows:0fr;transition:grid-template-rows .75s var(--ease)}
+.secret.is-open{grid-template-rows:1fr}
+.secret__inner{overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease) .12s,transform .7s var(--ease) .12s}
+.secret.is-open .secret__inner{opacity:1;transform:none}
+.secret__body{margin-top:22px;padding:clamp(22px,4vw,34px);background:linear-gradient(180deg,#f2f6ef,#fbfaf3);
+border:1px dashed rgba(30,59,42,.22);border-radius:18px}
+.secret__body p{margin:0;font-size:1.02rem;color:var(--tinta)}
+.secret__body .signature{margin-top:22px;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--bosque)}
+
+/* ===== SECCIÓN 3 ===== */
+.moments{padding:clamp(50px,9vh,100px) 0}
+.sec-head{max-width:620px;margin-bottom:clamp(30px,5vh,52px)}
+.sec-head h2{font-size:clamp(1.5rem,3.6vw,2.35rem);margin:0 0 10px}
+.sec-head p{margin:0;color:var(--tinta-suave)}
+.grid{display:grid;gap:clamp(16px,2.4vw,24px);grid-template-columns:repeat(auto-fit,minmax(248px,1fr))}
+.card{position:relative;text-align:left;cursor:pointer;background:var(--papel);border:1px solid var(--borde);
+border-radius:var(--radio);padding:26px 24px 24px;min-height:218px;display:flex;flex-direction:column;
+justify-content:space-between;overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
+.card::after{content:"";position:absolute;right:-30%;bottom:-45%;width:200px;height:200px;border-radius:50%;
+background:radial-gradient(circle,rgba(147,161,100,.26),rgba(147,161,100,0) 70%);transition:transform .6s var(--ease)}
+.card:hover,.card:focus-visible{transform:translateY(-6px);box-shadow:var(--sombra-lg);border-color:rgba(30,59,42,.26)}
+.card:hover::after{transform:scale(1.25)}
+.card:focus-visible{outline:2px solid var(--oliva);outline-offset:3px}
+.card__num{font-family:'Playfair Display',serif;font-size:2.4rem;line-height:1;color:rgba(30,59,42,.16)}
+.card__title{font-family:'Playfair Display',serif;font-size:1.22rem;color:var(--bosque);margin:14px 0 6px;display:block}
+.card__hint{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oliva);font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.card__hint svg{width:14px;fill:currentColor;transition:transform .4s var(--ease)}
+.card:hover .card__hint svg{transform:translateX(4px)}
+.card__dino{position:absolute;top:12px;right:10px;width:54px;opacity:.95}
+.card__dino svg{transition:transform .45s var(--ease)}
+.card:hover .card__dino svg,.card:focus-visible .card__dino svg{transform:translateY(-7px) rotate(-8deg) scale(1.1)}
+
+/* ===== MODAL ===== */
+.modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:clamp(16px,4vw,40px);
+background:rgba(22,38,28,.42);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);
+opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s var(--ease)}
+.modal.is-open{opacity:1;visibility:visible}
+.modal__panel{position:relative;width:min(620px,100%);max-height:86svh;overflow-y:auto;background:var(--papel);
+border:1px solid rgba(255,255,255,.6);border-radius:24px;padding:clamp(28px,5vw,44px);box-shadow:var(--sombra-lg);
+transform:translateY(24px) scale(.97);transition:transform .45s var(--ease)}
+.modal.is-open .modal__panel{transform:none}
+.modal__eyebrow{font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--oliva);font-weight:600;margin:0 0 10px}
+.modal__title{font-size:clamp(1.3rem,3.4vw,1.85rem);margin:0 0 16px}
+.modal__text{margin:0;color:var(--tinta-suave);font-size:1.01rem}
+.modal__close{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;cursor:pointer;
+border:1px solid var(--borde);background:rgba(227,234,224,.7);display:grid;place-items:center;
+transition:background .3s var(--ease),transform .3s var(--ease)}
+.modal__close:hover{background:var(--salvia-hondo);transform:rotate(90deg)}
+.modal__close svg{width:14px;fill:var(--bosque)}
+.modal__dino{width:80px;margin-top:26px}
+
+/* ===== SECCIÓN 4 ===== */
+.reasons{padding:clamp(50px,9vh,100px) 0 clamp(70px,11vh,120px)}
+.reasons__shell{max-width:860px;margin-inline:auto;background:rgba(255,253,247,.78);backdrop-filter:blur(6px);
+border:1px solid var(--borde);border-radius:var(--radio);padding:clamp(24px,4.5vw,46px);box-shadow:var(--sombra-md)}
+.reasons h2{font-size:clamp(1.35rem,3.2vw,2.1rem);margin:0 0 8px}
+.reasons__sub{margin:0 0 28px;color:var(--tinta-suave);font-size:.98rem}
+.acc{border-top:1px solid var(--borde)}
+.acc__item{border-bottom:1px solid var(--borde)}
+.acc__btn{width:100%;display:flex;align-items:center;gap:16px;padding:20px 4px;background:none;border:0;cursor:pointer;
+text-align:left;font-family:'Playfair Display',serif;font-size:clamp(1.02rem,2.4vw,1.2rem);color:var(--bosque);
+transition:color .3s var(--ease),padding-left .35s var(--ease)}
+.acc__btn:hover{color:var(--oliva);padding-left:10px}
+.acc__btn:focus-visible{outline:2px solid var(--oliva);outline-offset:2px}
+.acc__idx{font-family:'Inter',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.1em;color:var(--oliva);min-width:26px}
+.acc__plus{margin-left:auto;flex:0 0 auto;width:16px;transition:transform .45s var(--ease)}
+.acc__plus svg{fill:var(--oliva)}
+.acc__btn[aria-expanded="true"] .acc__plus{transform:rotate(45deg)}
+.acc__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.acc__panel.is-open{grid-template-rows:1fr}
+.acc__panel>div{overflow:hidden}
+.acc__panel p{margin:0 0 22px;padding-left:42px;color:var(--tinta-suave);opacity:0;transform:translateY(8px);
+transition:opacity .55s var(--ease) .1s,transform .55s var(--ease) .1s}
+.acc__panel.is-open p{opacity:1;transform:none}
+
+/* ===== CIERRE ===== */
+.outro{text-align:center;padding:0 0 clamp(70px,12vh,130px)}
+.outro__card{max-width:620px;margin-inline:auto;padding:clamp(30px,5vw,48px);border-radius:var(--radio);
+background:linear-gradient(170deg,var(--bosque),var(--bosque-suave) 70%,var(--oliva));box-shadow:var(--sombra-lg);color:#eef3ea}
+.outro__card h2{color:#fff;font-size:clamp(1.35rem,3.4vw,2rem);margin:0 0 14px}
+.outro__card p{margin:0;color:rgba(238,243,234,.9)}
+.outro__dino{width:96px;margin:26px auto 0}
+.outro__sign{margin-top:26px;font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:#fff}
+footer{text-align:center;padding:0 0 46px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+color:var(--tinta-suave);position:relative;z-index:2}
+
+/* ===== DINO MASCOTA + MENSAJE ===== */
+.mascot{position:fixed;left:clamp(12px,3vw,26px);bottom:clamp(12px,3vw,26px);z-index:55;width:clamp(78px,11vw,116px);
+cursor:pointer;-webkit-tap-highlight-color:transparent;animation:mascotIn 1.1s var(--ease) 1.4s both}
+.mascot:focus-visible{outline:2px solid var(--oliva);outline-offset:6px;border-radius:14px}
+.mascot__dino svg{animation:mascotWalk 3.4s ease-in-out infinite;filter:drop-shadow(0 10px 14px rgba(30,59,42,.22))}
+.mascot:hover .mascot__dino svg{animation-duration:1.4s}
+@keyframes mascotIn{from{opacity:0;transform:translateY(26px) scale(.8)}to{opacity:1;transform:none}}
+@keyframes mascotWalk{0%,100%{transform:translateY(0) rotate(-2deg)}25%{transform:translateY(-7px) rotate(2deg)}
+50%{transform:translateY(0) rotate(3deg)}75%{transform:translateY(-4px) rotate(-1deg)}}
+.mascot__bubble{position:absolute;left:calc(100% + 14px);bottom:58%;width:max-content;max-width:min(250px,58vw);
+padding:13px 17px;border-radius:18px 18px 18px 4px;background:var(--papel);border:1px solid var(--borde);
+box-shadow:var(--sombra-md);font-family:'Playfair Display',serif;font-size:clamp(.86rem,2.4vw,1rem);line-height:1.45;
+color:var(--bosque);opacity:0;visibility:hidden;transform:translateY(10px) scale(.9);transform-origin:0 100%;
+transition:opacity .45s var(--ease),transform .45s var(--ease),visibility .45s}
+.mascot__bubble.is-on{opacity:1;visibility:visible;transform:none}
+.mascot__bubble::after{content:"";position:absolute;left:-7px;bottom:10px;width:14px;height:14px;background:var(--papel);
+border-left:1px solid var(--borde);border-bottom:1px solid var(--borde);transform:rotate(45deg);border-radius:0 0 0 4px}
+.mascot__heart{color:#E8646A;display:inline-block;animation:heartBeat 1.3s ease-in-out infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}30%{transform:scale(1.3)}60%{transform:scale(1.05)}}
+
+@media (max-width:640px){
+body{line-height:1.68}.letter__card::before{top:18px;bottom:18px}.card{min-height:200px}
+.acc__btn{padding:17px 2px;gap:12px}.acc__panel p{padding-left:0}.modal__panel{border-radius:20px}}
+@media (max-width:520px){
+.mascot{width:72px}
+.mascot__bubble{left:0;bottom:calc(100% + 10px);border-radius:16px 16px 4px 16px}
+.mascot__bubble::after{left:14px;bottom:-7px;border:0;border-right:1px solid var(--borde);border-bottom:1px solid var(--borde)}}
+@media (prefers-reduced-motion:reduce){
+*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+.reveal{opacity:1;transform:none}.dino{opacity:.14}
+.mascot__bubble{opacity:1;visibility:visible;transform:none}}
+</style>
+</head>
+<body>
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M13.2 4.8 11.8 6.2l4.8 4.8H3v2h13.6l-4.8 4.8 1.4 1.4L20.4 12Z"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9Z"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M11 5h2v14h-2zM5 11h14v2H5z"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="M18.3 7.1 16.9 5.7 12 10.6 7.1 5.7 5.7 7.1l4.9 4.9-4.9 4.9 1.4 1.4 4.9-4.9 4.9 4.9 1.4-1.4-4.9-4.9Z"/></symbol>
+</svg>
+
+<div class="dino-field" id="dinoField" aria-hidden="true"></div>
+
+<!-- ===== SECCIÓN 1 ===== -->
+<header class="hero">
+<div class="wrap hero__inner">
+<span class="date-chip"><span class="dot"></span>21/12/2018</span>
+<h1>El dia en que comenzamos una hermosa historia, una conexión que millones de personas no tienen, <em>primeros nos vimos el alma y despues el cuerpo</em></h1>
+<p class="hero__name">Para Darcy Tello</p>
+<div class="scroll-cue">
+<div class="scroll-cue__dino js-dino"></div>
+<div class="scroll-cue__line"></div>
+<span class="scroll-cue__txt">Desliza</span>
+</div>
+</div>
+</header>
+
+<!-- ===== SECCIÓN 2 ===== -->
+<section class="letter" id="carta">
+<div class="wrap">
+<div class="letter__card reveal">
+<p class="eyebrow">La carta</p>
+<h2>Lo que quiero decirte sin prisa</h2>
+<div class="rule"></div>
+<p class="lead">Hay cosas que no se dicen bien en un mensaje rápido, así que te hice este espacio: tranquilo, sin ruido, solo para ti.</p>
+<p>Si llegaste hasta aquí, léelo con calma. No vengo a prometerte perfección, vengo a mostrarte intención: quiero hacer las cosas distinto, con paciencia y con hechos, no solo con palabras.</p>
+<button class="secret-btn" id="secretBtn" aria-expanded="false" aria-controls="secretPanel">
+<span class="secret-btn__icon"><svg viewBox="0 0 24 24" style="width:20px;fill:currentColor"><use href="#chev"/></svg></span>
+<span>Despliega para saber un poco mas mami (De maneras muy diferentes te brinde amor, aunque hubieron momentos que no supe expresar mis emociones, nunca en mi estaba hacerte daño, por favor lee bien lo de a continuación)</span>
+</button>
+<div class="secret" id="secretPanel" role="region" aria-labelledby="secretBtn">
+<div class="secret__inner">
+<div class="secret__body">
+<p>Estuvimos en nuestros buenos y malos momentos acompañandonos siempre, entre risas y momentos tristes nunca nos abandonamos, cometi errores tal vez al hablarte mal y todo, pero estaba tan cegado de muchas cosas que la realidad es que tu siempre estuviste a mi lado, enserio te mereces el mundo, me recuerdo bien que siempre que alguien te hacia o trataba mal nunca querias devolver eso y eso habla mucho de ti, la verdad que eres la mejor persona que conoci y eres mi dino, nunca te engañe porque desde la primera vez que lloraste en el mueble de mi casa porque las cosas que te pasaron antes de estar conmigo muy aparte de lo que le dije a mi abuela, no queria repetir esa historia de infidelidades y tener que seguir por hijos o otras cosas, siempre pense en ti antes de hacer algo y creo que eso tambien habla mucho de mi, se que rapido no se soluciona nada pero si quiero cambiar por la persona que amo y me gustaria envejecer, enserio quisiera que estes a mi lado en esta y todas las demas vidas.</p>
+<p class="signature">— Tu dino, siempre.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECCIÓN 3 ===== -->
+<section class="moments" id="momentos">
+<div class="wrap">
+<div class="sec-head reveal">
+<p class="eyebrow">Nuestros momentos</p>
+<h2>Seis recuerdos que no se me borran</h2>
+<p>Toca cada tarjeta y ábrela. Están contados tal como los siento.</p>
+</div>
+<div class="grid" id="cardGrid">
+
+<button class="card reveal" data-d="1" data-eyebrow="Recuerdo 01" data-title="Plaza Trujillo, entre todo el tráfico" data-text="La primera vez que fui por ti en todo el trafico jajaja hasta plaza Trujillo, estuvimos nos vimos, mas que el cuerpo nos tocamos el alma y eso es lo que nadie hace en estos tiempos">
+<span class="card__dino js-dino"></span>
+<span class="card__num">01</span>
+<span><span class="card__title">Plaza Trujillo</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+<button class="card reveal" data-d="2" data-eyebrow="Recuerdo 02" data-title="Los 7 minutos en los que solo pensé en ti" data-text="Estuviste conmigo cuando me estaba muriendo y mande audios a todos pensando que serian mis ultimos momentos, la primera persona que estaria en esos 7 minutos eres tu, porque nunca dude del amor que te tengo siempre fuiste tu Darcy">
+<span class="card__dino js-dino"></span>
+<span class="card__num">02</span>
+<span><span class="card__title">Siempre fuiste tú</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+<button class="card reveal" data-d="3" data-eyebrow="Recuerdo 03" data-title="Raura: el día que pensé que te perdía" data-text="Recuerdo esa vez en Raura que te sentias muy mal, a pesar de que tomaste medicina y todo, todos seguian subiendo me quede contigo, estaba gritando como loco al chofer para que baje para irnos, estuve golpeando los carros porque no sabia que mas hacer para que alguien te auxiliara, en ese momento estabas como un feto muriendo y te vi, me rompiste pense que perdia al amor de mi vida">
+<span class="card__dino js-dino"></span>
+<span class="card__num">03</span>
+<span><span class="card__title">Raura</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+<button class="card reveal" data-d="4" data-eyebrow="Recuerdo 04" data-title="Chimbote, 21 de octubre de 2021" data-text="Fuimos a Chimbote especialmente para tu cumpleaños un 21 Octubre del 2021, no importa el dinero ni lo que tuve que pasar para conseguirlo solo se que mi Enamorada, Mujer, Mi Novia se merecia lo mejor y creo yo que fue un bonito viaje (Chimbote y Trujillo).">
+<span class="card__dino js-dino"></span>
+<span class="card__num">04</span>
+<span><span class="card__title">Tu cumpleaños</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+<button class="card reveal" data-d="5" data-eyebrow="Recuerdo 05" data-title="DINO BODA <3" data-text="Como olvidar el dia de nuestra boda en el mall, aunque ese dia te palteaste y luego te animaste ya vez, al final yo siempre estuve alli a pesar que no estaba bien vestido ni nada, sabia que te haria feliz aparte tenemos un certificado por el mall del sur no nos podemos divorciar  :p Te Amo Mucho Dino <3">
+<span class="card__dino js-dino"></span>
+<span class="card__num">05</span>
+<span><span class="card__title">DINO COMPROMISO <3</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+<button class="card reveal" data-d="6" data-eyebrow="Recuerdo 06" data-title="PROMOCION VALE" data-text="Ese dia fue especial para mi, porque pudimos estar juntos todos faltaba el viejito, pero a pesar de eso lo pase bien a tu lado, siempre me ha gustado verte un poco picada o borrachita porque te pones mas sentimental cosa que me encanta, me gusta todo de ti y desde el dia que estamos separados no hay 1 solo dia que no haya pensado en ti, ya sea que hayas comido, estes bien o otro, se que tuve la culpa pero en este tiempo he hecho cosas que nunca imagine que haria en mi vida y es cambiar por la persona que amo y que quiero que siga a mi lado, la verdad es 1 de cada 1000000 de hombres lo que hacen eso para mantener a la persona que aman y yo estoy cambiando porque la verdad nunca te quise para el momento porque siempre pense como te sentirias, te escribo todo esto con el corazon no sabes lo dificil que es ni como me siento ahorita al escribirte todo esto, te amo mucho darcy nunca entenderas cuanto, tambien agradezco y aprecio todo lo que tu familia hizo por mi son las mejores personas que pude haber conocido">
+<span class="card__dino js-dino"></span>
+<span class="card__num">06</span>
+<span><span class="card__title">FAMILIA VALLEJOS TELLO</span>
+<span class="card__hint">Abrir recuerdo <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span></span>
+</button>
+
+</div>
+</div>
+</section>
+
+<!-- ===== SECCIÓN 4 ===== -->
+<section class="reasons" id="razones">
+<div class="wrap">
+<div class="reasons__shell reveal">
+<p class="eyebrow">Caja de sorpresas</p>
+<h2>Eres una mujer fuerte, siempre feliz a pesar de todo, la persona con bondad en el corazón</h2>
+<p class="reasons__sub">Toca cada línea y ábrela. Son cosas que pienso de ti, aunque no siempre te las dije en voz alta.</p>
+<div class="acc" id="acc">
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">01</span> Tu fortaleza<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Te vi cansada, te vi dolida, y aun así te vi levantarte al día siguiente como si nada. Eso no es suerte: eso es carácter, y lo admiro más de lo que te dije.</p></div></div>
+</div>
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">02</span> Tu bondad<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Cuando alguien te trataba mal, tú nunca querías devolver lo mismo. Nunca. Eso dice de ti más que cualquier palabra bonita que yo pueda escribir aquí.</p></div></div>
+</div>
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">03</span> Tu risa<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Esa risa que aparecía incluso en los días difíciles. Era mi señal de que todo iba a estar bien, y la extraño con una claridad incómoda.</p></div></div>
+</div>
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">04</span> Tu lealtad<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Estuviste en los buenos y en los malos momentos sin medir si yo lo merecía. Nunca me abandonaste, y eso lo reconozco con el pecho abierto.</p></div></div>
+</div>
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">05</span> Lo que me toca a mí<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Sé que no se arregla rápido y no te voy a pedir que lo olvides. Lo que sí puedo prometerte es trabajo real: aprender a decirte lo que siento a tiempo y cuidar tus emociones antes que mi orgullo.</p></div></div>
+</div>
+<div class="acc__item">
+<button class="acc__btn" aria-expanded="false"><span class="acc__idx">06</span> Mi dino<span class="acc__plus"><svg viewBox="0 0 24 24"><use href="#plus"/></svg></span></button>
+<div class="acc__panel"><div><p>Eres mi dino. Y si la vida me deja elegir otra vez, te elijo en esta y en todas las demás vidas, para envejecer contigo sin apuro.</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== CIERRE ===== -->
+<section class="outro">
+<div class="wrap">
+<div class="outro__card reveal">
+<h2>¿Nos damos una nueva oportunidad?</h2>
+<p>Sin presión y sin prisa. Solo quiero una conversación tranquila contigo, y la chance de demostrarte con hechos lo que aquí está escrito con palabras.</p>
+<div class="outro__dino js-dino"></div>
+<p class="outro__sign">Te amo, Darcy.</p>
+</div>
+</div>
+</section>
+
+<footer>21/12/2018 — y lo que venga</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+<div class="modal__panel" role="document">
+<button class="modal__close" id="modalClose" aria-label="Cerrar"><svg viewBox="0 0 24 24"><use href="#close"/></svg></button>
+<p class="modal__eyebrow" id="modalEyebrow">Recuerdo</p>
+<h3 class="modal__title serif" id="modalTitle">Título</h3>
+<p class="modal__text" id="modalText">Texto</p>
+<div class="modal__dino js-dino"></div>
+</div>
+</div>
+
+<!-- ===== DINO MASCOTA ===== -->
+<div class="mascot" id="mascot" role="button" tabindex="0" aria-label="Mensaje del dino">
+<div class="mascot__bubble" id="mascotBubble" aria-live="polite">Regresa con papi te ama mucho <span class="mascot__heart">&#10084;</span></div>
+<div class="mascot__dino js-dino"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rnd = (a,b)=> Math.random()*(b-a)+a;
+
+/* ---- EL DINO (fiel a la imagen de referencia) ---- */
+const DINO_SVG = `
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g class="dk-tail">
+<path d="M62 124 C36 134 15 160 9 190 C33 186 58 164 74 140 Z" fill="#7CB342"/>
+<path d="M9 190 C33 186 58 164 74 140 C70 152 48 180 9 190 Z" fill="#689F38"/>
+</g>
+<g class="dk-leg-b">
+<path d="M80 158 C74 180 66 191 58 198 C77 205 95 197 101 182 C105 170 103 160 100 152 Z" fill="#689F38"/>
+<g fill="#F57C20"><path d="M60 197 l-9 5 l9 3 Z"/><path d="M70 201 l-6 7 l8 1 Z"/><path d="M80 201 l-3 8 l7 -1 Z"/></g>
+</g>
+<ellipse cx="100" cy="126" rx="52" ry="46" fill="#7CB342"/>
+<path d="M140 92 C158 108 156 150 134 168 C148 146 150 114 140 92 Z" fill="#689F38" opacity=".5"/>
+<ellipse cx="105" cy="143" rx="38" ry="28" fill="#F5E6C8"/>
+<g fill="#F57C20">
+<path d="M126 84 L135 61 L139 82 Z"/><path d="M111 80 L118 58 L124 78 Z"/><path d="M96 79 L101 59 L108 77 Z"/>
+<path d="M81 84 L85 66 L92 81 Z"/><path d="M69 94 L71 78 L79 90 Z"/><path d="M60 106 L61 92 L68 102 Z"/><path d="M54 118 L54 106 L61 114 Z"/>
+</g>
+<g class="dk-leg-f">
+<path d="M116 158 C114 182 108 193 102 200 C123 207 141 199 147 183 C151 169 147 158 143 151 Z" fill="#7CB342"/>
+<g fill="#F57C20"><path d="M105 199 l-8 6 l9 3 Z"/><path d="M116 203 l-6 7 l8 1 Z"/><path d="M127 203 l-3 8 l7 -1 Z"/></g>
+</g>
+<g class="dk-arm">
+<path d="M137 120 C123 114 120 99 129 92 C139 99 146 110 149 119 Z" fill="#689F38"/>
+<circle cx="130" cy="92" r="4.5" fill="#7CB342"/><circle cx="136" cy="96" r="4" fill="#7CB342"/>
+</g>
+<g class="dk-head">
+<circle cx="146" cy="80" r="39" fill="#7CB342"/>
+<path d="M152 62 C180 58 205 68 209 82 C192 88 166 86 152 80 Z" fill="#7CB342"/>
+<path d="M150 80 C170 88 194 90 209 82 C204 99 174 107 150 99 Z" fill="#D97B72"/>
+<path d="M148 96 C170 104 194 101 206 93 C201 110 172 119 146 110 Z" fill="#F5E6C8"/>
+<ellipse cx="150" cy="96" rx="23" ry="15" fill="#F5E6C8"/>
+<g fill="#FFF8E7">
+<path d="M160 81 l4 8 l5 -6 Z"/><path d="M174 85 l4 8 l5 -6 Z"/><path d="M188 85 l4 7 l5 -7 Z"/>
+<path d="M166 100 l5 -7 l4 8 Z"/><path d="M180 101 l5 -7 l4 7 Z"/>
+</g>
+<ellipse class="dk-eye" cx="160" cy="66" rx="5.4" ry="6" fill="#1A1A1A"/>
+<path d="M176 50 C188 58 192 74 184 90 C190 72 186 58 176 50 Z" fill="#689F38" opacity=".45"/>
+</g>
+</svg>`;
+
+document.querySelectorAll('.js-dino').forEach(slot => slot.innerHTML = DINO_SVG);
+
+/* ---- 1. DINOSAURIOS FLOTANTES ---- */
+const field = document.getElementById('dinoField');
+const count = window.innerWidth < 700 ? 6 : 11;
+
+for(let i=0;i<count;i++){
+  const d = document.createElement('div');
+  d.className = 'dino';
+  d.style.width = rnd(58,150).toFixed(0) + 'px';
+  d.style.left  = rnd(-2,92).toFixed(1) + 'vw';
+  d.style.top   = rnd(2,94).toFixed(1) + 'vh';
+  d.style.setProperty('--dur',    rnd(13,26).toFixed(1) + 's');
+  d.style.setProperty('--delay',  rnd(0,7).toFixed(1) + 's');
+  d.style.setProperty('--travel', rnd(34,90).toFixed(0) + 'px');
+  d.style.setProperty('--rot',    rnd(-12,12).toFixed(0) + 'deg');
+  d.style.setProperty('--op',     rnd(.10,.22).toFixed(2));
+  if(Math.random() > .5) d.style.scale = '-1 1';
+  d.innerHTML = DINO_SVG;
+  field.appendChild(d);
+}
+for(let i=0;i<6;i++){
+  const p = document.createElement('span');
+  p.className = 'paw';
+  p.style.left = rnd(4,94).toFixed(1)+'vw';
+  p.style.top  = rnd(6,92).toFixed(1)+'vh';
+  p.style.animationDuration = rnd(11,20).toFixed(1)+'s';
+  p.style.animationDelay    = rnd(0,6).toFixed(1)+'s';
+  field.appendChild(p);
+}
+
+/* ---- 2. REVEAL AL SCROLL ---- */
+const revealables = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window && !reduce){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  revealables.forEach(el=>io.observe(el));
+}else{
+  revealables.forEach(el=>el.classList.add('is-in'));
+}
+
+/* ---- 3. PÁRRAFO SECRETO ---- */
+const sBtn   = document.getElementById('secretBtn');
+const sPanel = document.getElementById('secretPanel');
+sBtn.addEventListener('click', ()=>{
+  const open = sPanel.classList.toggle('is-open');
+  sBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if(open) setTimeout(()=>sPanel.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'}), 420);
+});
+
+/* ---- 4. MODALES DE RECUERDOS ---- */
+const modal    = document.getElementById('modal');
+const mEyebrow = document.getElementById('modalEyebrow');
+const mTitle   = document.getElementById('modalTitle');
+const mText    = document.getElementById('modalText');
+const mClose   = document.getElementById('modalClose');
+let lastFocus  = null;
+
+function openModal(card){
+  lastFocus = document.activeElement;
+  mEyebrow.textContent = card.dataset.eyebrow || 'Recuerdo';
+  mTitle.textContent   = card.dataset.title   || '';
+  mText.textContent    = card.dataset.text    || '';
+  modal.hidden = false;
+  requestAnimationFrame(()=> modal.classList.add('is-open'));
+  document.body.style.overflow = 'hidden';
+  mClose.focus();
+}
+function closeModal(){
+  modal.classList.remove('is-open');
+  document.body.style.overflow = '';
+  const onEnd = ()=>{
+    modal.hidden = true;
+    modal.removeEventListener('transitionend', onEnd);
+    if(lastFocus) lastFocus.focus();
+  };
+  if(reduce){ onEnd(); } else { modal.addEventListener('transitionend', onEnd); }
+}
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click', ()=> openModal(card));
+  card.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(card); }
+  });
+});
+mClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && modal.classList.contains('is-open')) closeModal();
+});
+
+/* ---- 5. ACORDEÓN "RAZONES" ---- */
+document.querySelectorAll('.acc__btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const panel = btn.nextElementSibling;
+    const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+    document.querySelectorAll('.acc__btn').forEach(other=>{
+      if(other!==btn){
+        other.setAttribute('aria-expanded','false');
+        other.nextElementSibling.classList.remove('is-open');
+      }
+    });
+    btn.setAttribute('aria-expanded', willOpen ? 'true':'false');
+    panel.classList.toggle('is-open', willOpen);
+  });
+});
+
+/* ---- 6. DINO MASCOTA Y SU MENSAJE ---- */
+const mascot = document.getElementById('mascot');
+const bubble = document.getElementById('mascotBubble');
+const FRASES = [
+  'Regresa con papi te ama mucho',
+  'Papi cometio errores pero, en esta vida aceptar los errores y cambiar no todos lo hacen mami',
+  'Yo se que papi ahora es diferente, por favor mami no hagas algo de lo que despues te puedas arrepentir la vida es solo una'
+];
+let idx = 0, hideTimer = null;
+
+function sayBubble(ms){
+  clearTimeout(hideTimer);
+  bubble.innerHTML = FRASES[idx % FRASES.length].replace(
+    '\\u2764','<span class="mascot__heart">\\u2764</span>');
+  idx++;
+  bubble.classList.add('is-on');
+  if(ms) hideTimer = setTimeout(()=> bubble.classList.remove('is-on'), ms);
+}
+
+if(!reduce){
+  setTimeout(()=> sayBubble(7000), 2600);
+  setInterval(()=>{
+    if(!bubble.classList.contains('is-on')) sayBubble(6500);
+  }, 22000);
+}
+
+mascot.addEventListener('click', ()=> sayBubble(8000));
+mascot.addEventListener('keydown', e=>{
+  if(e.key==='Enter'||e.key===' '){ e.preventDefault(); sayBubble(8000); }
+});
+
+const outro = document.querySelector('.outro__card');
+if(outro && 'IntersectionObserver' in window){
+  new IntersectionObserver((en,obs)=>{
+    if(en[0].isIntersecting){ sayBubble(0); obs.disconnect(); }
+  },{threshold:.4}).observe(outro);
+}
+
+})();
+</script>
+</body>
+</html>
